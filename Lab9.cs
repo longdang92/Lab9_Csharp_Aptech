@@ -66,14 +66,23 @@ namespace BaiChuaIMovie
                     case "4":
                         Console.Write("Enter Movie'name to delete:");
                         string nameDel = Console.ReadLine();
+                        bool daxoa=false;
+                        ArrayList dsxoa = new ArrayList();
                         foreach (IMovie m in CL)
                             if (m.Name == nameDel)
                             {
-                                CL.Remove(m);
+                                //CL.Remove(m);
+                                                               
+                                dsxoa.Add(m);
                                 daxoa=true;
-                                break;
+                                //break;
                             }
-                        
+                        foreach (IMovie m in dsxoa)
+                        {
+                            CL.Remove(m);
+                            Console.WriteLine("Vua xoa:{0}", m.Name);
+                            CL.Add(m);
+                        }
                         if (daxoa)
                             Console.WriteLine("Done!");
                         else
